@@ -12,16 +12,32 @@
 
 # testing
 /coverage
+coverage/
+/test-results/
+test-results/
+/playwright-report/
+playwright-report/
+/blob-report/
+.turbo/
+.cache/
 
 # next.js
 /.next/
+.next/
 /out/
+out/
 
 # production
 /build
+build/
+dist/
 
 # misc
 .DS_Store
+Thumbs.db
+*.tmp
+*.temp
+*.bak
 *.pem
 
 # debug
@@ -29,9 +45,12 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+*.log
 
-# env files (can opt-in for committing if needed)
-.env*
+# env files. This app needs none. An example file, if added later, stays shareable.
+.env
+.env.*
+!.env.example
 
 # vercel
 .vercel

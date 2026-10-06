@@ -1,12 +1,15 @@
 {
-  "name": "groww-starter",
+  "name": "groww-firststep",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test:e2e": "playwright test",
+    "test": "node --experimental-strip-types --import ./tests/register.mjs --test tests/finance.test.mts tests/plan.test.mts tests/risk.test.mts tests/firewall.test.mts tests/simulator.test.mts tests/simulation-session.test.mts tests/journey.test.mts tests/validation.test.mts tests/storage.test.mts tests/copy.test.mts"
   },
   "dependencies": {
     "next": "16.3.8",
@@ -14,6 +17,7 @@
     "react-dom": "19.2.8"
   },
   "devDependencies": {
+    "@playwright/test": "^1.63.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

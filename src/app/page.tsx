@@ -1,69 +1,75 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Link from "next/link";
+import { experienceLabel, personas } from "@/data/personas";
+import { formatRupees } from "@/lib/money";
 
-export default function Home() {
+const journey = ["Understand", "Plan", "Simulate", "Protect", "Decide", "Progress"];
+
+export default function HomePage() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>
-            To get started, edit the{" "}
-            <code className={styles.code}>page.tsx</code> file.
-          </h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
+    <div className="stack">
+      <section className="hero">
+        <p className="eyebrow">Educational prototype</p>
+        <h1>Groww FirstStep</h1>
+        <p className="lede">From first paycheck to first confident investment.</p>
+        <p className="hero-copy">
+          Understand what you can invest, see risk in real rupees, and pressure-test your decision
+          before you act.
+        </p>
+        <div className="cta-row">
+          <Link className="btn btn-primary" href="/starter">
+            Build my starter plan
+          </Link>
+          <a className="btn btn-secondary" href="#demo-personas">
+            Try a demo persona
           </a>
         </div>
-      </main>
+        <ol className="journey" aria-label="Journey">
+          {journey.map((stage) => (
+            <li key={stage}>{stage}</li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="section" id="demo-personas" aria-labelledby="demo-heading">
+        <h2 id="demo-heading">Try a demo persona</h2>
+        <p className="section-intro">
+          These are fictional starting points. You can edit every number after you open one.
+        </p>
+        <div className="persona-grid">
+          {personas.map((persona) => (
+            <article className="card persona-card" key={persona.id}>
+              <p className="eyebrow">{persona.code}</p>
+              <h3>{persona.name}</h3>
+              <p>{persona.summary}</p>
+              <dl className="meta-list">
+                <div>
+                  <dt>Age</dt>
+                  <dd>{persona.age}</dd>
+                </div>
+                <div>
+                  <dt>Monthly income</dt>
+                  <dd>{formatRupees(persona.monthlyIncome)}</dd>
+                </div>
+                <div>
+                  <dt>Essential expenses</dt>
+                  <dd>{formatRupees(persona.essentialExpenses)}</dd>
+                </div>
+                <div>
+                  <dt>Liquid savings</dt>
+                  <dd>{formatRupees(persona.liquidSavings)}</dd>
+                </div>
+                <div>
+                  <dt>Experience</dt>
+                  <dd>{experienceLabel(persona.investmentExperience)}</dd>
+                </div>
+              </dl>
+              <Link className="btn btn-secondary" href={`/starter?persona=${persona.id}`}>
+                Use this demo
+              </Link>
+            </article>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

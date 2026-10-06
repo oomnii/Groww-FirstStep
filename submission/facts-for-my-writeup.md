@@ -1,0 +1,22 @@
+# Facts for my writeup
+
+- product name: Groww FirstStep
+- tagline: From first paycheck to first confident investment.
+- user targeted: about 20–26, early paychecks, first or early investing decisions
+- hypothesis tested: a rule-based walkthrough of surplus, buffer, a rupee drop, and a pause is the product
+- scope: First Paycheck Investing OS, Risk Reality Simulator, FOMO Firewall
+- scope: Starter Plan is the paycheck-rule result, then simulate, pause, simulated decision, progress
+- out-of-scope: official Groww product, investment advice, real transactions, accounts, database, external data service, environment variables
+- out-of-scope: external model services, chat interfaces, embeddings, recommendation models
+- feature names: starter wizard, Starter Plan, Risk Reality Simulator, FOMO Firewall, progress
+- assumptions: synthetic personas and fictional categories only
+- assumptions: monthly surplus is income minus essential expenses, floored at ₹0
+- assumptions: illustrative emergency target is essential expenses × 3
+- assumptions: buffer standing labels are Weak, Developing, Comparatively healthy, or Not calculated
+- assumptions: scenario drops are −10%, −20%, −30% and are not forecasts
+- assumptions: five pause rules, none of which block a simulated save
+- assumptions: state stays in this browser under `groww-starter-prototype-v1`
+- metrics considered: monthly surplus, months of essential expenses covered, comfort level, share of one option, confidence before and after
+- eval coverage: `npm test` decision-engine files under `tests/`
+- eval coverage: Playwright file set under `e2e/`, 16 numbered evals plus safety and guard checks, recorded in `submission/evals-used.md`
+- eval coverage: manual browser notes in `submission/manual-testing.md`
